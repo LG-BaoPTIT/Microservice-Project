@@ -1,13 +1,21 @@
 package com.lgb.employeeservice.command.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lgb.employeeservice.command.command.CreateEmployeeCommand;
 import com.lgb.employeeservice.command.command.DeleteEmployeeCommand;
 import com.lgb.employeeservice.command.command.UpdateEmployeeCommand;
 import com.lgb.employeeservice.command.model.EmployeeRequestModel;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.integration.dsl.MessageChannels;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.Source;
 import java.util.UUID;
 
 @RestController
